@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <style>
+        .error {
+            color:red;
+        }
+        #sign-up {
+            margin-top: 30px;
+        }
+        #login-details {
+            padding: 10px;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover {
+            background-color: #111;
+            text-decoration: none;
+            color:white;
+        } 
+                
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a  href="assignment3-home.html">Home</a></li>
+            <li><a href="assignment3-about.html">About</a></li>
+            <li><a href="assignment3-contact.html">Contact US</a></li>
+            <li><a href="assignment3-login.html">Login</a></li>
+            <li><a href="assignment3-signup.html" class="active">Create Account</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div id="login-details">
+                    <h1>login details are comming soon!</h1>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <form id="sign-up">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Signup Form</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="usr">First Name <Span class="error">*</Span></label>
+                                        <input type="text" class="form-control" id="fname" name="firstname" required>
+                                        <div class="error" id="fname-error"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="lname">Last Name</label>
+                                        <input type="text" class="form-control" id="lname" name="lastname" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email<Span class="error">*</Span></label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                        <div class="error" id="email-error"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="age">Age</label>
+                                        <input type="text" class="form-control" id="age" name="age" >
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Password">Password <Span class="error">*</Span></label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                        <div class="error" id="password-error"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="Password">Confirm Password <Span class="error">*</Span></label>
+                                        <input type="password" class="form-control" id="cpassword" name="cpassword" required>
+                                        <div class="error" id="cpassword-error"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Gender</label><br/>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <input type="radio" value="Male">&nbsp&nbspMale
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="radio" value="Female">&nbsp&nbspFemale
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Game</label><br/>
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <input type="checkbox" value="Cricket">&nbsp&nbspCricket
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="checkbox" value="Football">&nbsp&nbspFootball
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="checkbox" value="kabaddi">&nbsp&nbspkabaddi
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="checkbox" value="Kho Kho">&nbsp&nbspKho Kho
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary"  onclick="sendData()">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#sign-up").submit(function(e) {
+            e.preventDefault();
+        });
+
+        $('#cpassword').change( function() {
+            var cpassword = this.value;
+            var password = document.getElementById('password').value;
+
+            if(password=='') {
+                alert("Please enter password");
+                document.getElementById('cpassword').value = '';
+            }
+            else {
+                if( password !== cpassword) {
+                    alert("Confirm password and Password field should be match");
+                    document.getElementById('cpassword').value = '';
+                }
+            }
+        });
+
+        function sendData(e){
+            
+            let ageStatus,successMeassge='';
+            var fname = document.getElementById("fname").value;
+            var lname = document.getElementById("lname").value;
+            var email = document.getElementById("email").value;
+            var password = document.getElementById("password").value;
+            var cPassword = document.getElementById("cpassword").value;
+            var age = document.getElementById("age").value;
+            
+            if(fname === '' ) {
+                document.getElementById("fname-error").innerText="Please enter first name";
+            }
+
+
+            if(email == '') {
+                document.getElementById("email-error").innerText="Please enter Email";
+            }
+
+            if(password == '') {
+                document.getElementById("password-error").innerText="Please enter password";
+            }
+            if(cPassword == '') {
+                document.getElementById("cpassword-error").innerText="Please enter confirm password";
+            }
+
+            if(age<18) {
+                ageStatus="Younger";
+            }
+            else if( age <50 && age >18) {
+                ageStatus="Mediator";
+            }
+            else if(age >50) {
+                ageStatus="Elder";  
+            }
+
+            if(fname !== '' && email !=='' && password !== '' && cPassword !=='') {
+                successMeassge +="<h3>"+fname+" Created Successfully</h3>";
+                if(age != '') {
+                    successMeassge +="<p> you are  <b>"+ageStatus+"</b></p>";
+                }
+                document.getElementById("login-details").innerHTML= successMeassge;
+                document.getElementById("fname-error").innerText="";
+                document.getElementById("email-error").innerText="";
+                document.getElementById("password-error").innerText="";
+                document.getElementById("cpassword-error").innerText="";
+            }
+         
+        }
+    </script>
+</body>
+</html>
